@@ -19,12 +19,22 @@ export default function CarGallery({ images, title }: CarGalleryProps) {
     );
   }
 
+  const currentImage = images[selectedImage];
+  
+  if (!currentImage) {
+    return (
+      <div className="w-full h-96 bg-vintage-dark rounded-lg flex items-center justify-center">
+        <span className="text-vintage-gold text-lg">Image not available</span>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4">
       {/* Main Image */}
       <div className="relative overflow-hidden rounded-lg">
         <img
-          src={`${images[selectedImage].imgix_url}?w=1200&h=800&fit=crop&auto=format,compress`}
+          src={`${currentImage.imgix_url}?w=1200&h=800&fit=crop&auto=format,compress`}
           alt={`${title} - Image ${selectedImage + 1}`}
           className="w-full h-96 object-cover"
           width={600}
