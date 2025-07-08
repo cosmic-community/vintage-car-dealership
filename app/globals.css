@@ -56,6 +56,9 @@
 .car-container {
   position: relative;
   z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .animate-float {
@@ -64,6 +67,8 @@
 
 .car-svg {
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  max-width: 100%;
+  height: auto;
 }
 
 .animate-pulse-glow {
@@ -87,9 +92,10 @@
 
 .exhaust-smoke {
   position: absolute;
-  right: -20px;
+  right: 40px;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 1;
 }
 
 .smoke-puff {
@@ -109,6 +115,7 @@
   position: absolute;
   inset: 0;
   z-index: 3;
+  pointer-events: none;
 }
 
 .sparkle {
@@ -178,16 +185,18 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsive Animations */
+/* Responsive Adjustments */
 @media (max-width: 1024px) {
-  .car-container {
-    transform: scale(0.9);
+  .car-svg {
+    width: 280px;
+    height: 120px;
   }
 }
 
 @media (max-width: 768px) {
-  .car-container {
-    transform: scale(0.8);
+  .car-svg {
+    width: 240px;
+    height: 100px;
   }
   
   .animate-float {
@@ -201,12 +210,17 @@
 }
 
 @media (max-width: 480px) {
-  .car-container {
-    transform: scale(0.6);
+  .car-svg {
+    width: 200px;
+    height: 80px;
   }
   
   .smoke-puff {
     width: 6px;
     height: 6px;
+  }
+  
+  .exhaust-smoke {
+    right: 30px;
   }
 }

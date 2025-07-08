@@ -10,9 +10,9 @@ export default function CarAnimation() {
   }, []);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+    <div className="relative w-full h-full flex items-center justify-center">
       {/* Animated Road Lines */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-vintage-gold to-transparent opacity-30">
+      <div className="absolute bottom-8 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-vintage-gold to-transparent opacity-30">
         <div className="road-line"></div>
       </div>
       
@@ -20,9 +20,9 @@ export default function CarAnimation() {
       <div className={`car-container ${isLoaded ? 'animate-float' : ''}`}>
         {/* Car SVG */}
         <svg
-          width="300"
-          height="120"
-          viewBox="0 0 300 120"
+          width="320"
+          height="140"
+          viewBox="0 0 320 140"
           className="car-svg"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -31,15 +31,15 @@ export default function CarAnimation() {
           <g className="car-body">
             {/* Main Body */}
             <path
-              d="M50 80 L70 50 L90 45 L210 45 L230 50 L250 80 L50 80 Z"
+              d="M60 90 L80 60 L100 55 L220 55 L240 60 L260 90 L60 90 Z"
               fill="url(#carGradient)"
               stroke="rgba(243, 229, 171, 0.3)"
-              strokeWidth="1"
+              strokeWidth="2"
             />
             
             {/* Roof */}
             <path
-              d="M85 50 L95 35 L205 35 L215 50 L85 50 Z"
+              d="M95 60 L105 45 L215 45 L225 60 L95 60 Z"
               fill="url(#roofGradient)"
               stroke="rgba(243, 229, 171, 0.2)"
               strokeWidth="1"
@@ -47,32 +47,42 @@ export default function CarAnimation() {
             
             {/* Front Bumper */}
             <rect
-              x="45"
-              y="75"
+              x="55"
+              y="85"
               width="25"
-              height="8"
-              rx="4"
+              height="10"
+              rx="5"
               fill="url(#bumperGradient)"
             />
             
             {/* Rear Bumper */}
             <rect
-              x="230"
-              y="75"
+              x="240"
+              y="85"
               width="25"
-              height="8"
-              rx="4"
+              height="10"
+              rx="5"
               fill="url(#bumperGradient)"
             />
             
             {/* Chrome Details */}
             <line
-              x1="70"
-              y1="65"
-              x2="230"
-              y2="65"
+              x1="80"
+              y1="75"
+              x2="240"
+              y2="75"
               stroke="rgba(243, 229, 171, 0.4)"
               strokeWidth="2"
+            />
+            
+            {/* Grille */}
+            <rect
+              x="45"
+              y="65"
+              width="15"
+              height="15"
+              rx="2"
+              fill="url(#grilleGradient)"
             />
           </g>
           
@@ -80,33 +90,33 @@ export default function CarAnimation() {
           <g className="wheels">
             {/* Front Wheel */}
             <circle
-              cx="90"
-              cy="88"
-              r="15"
+              cx="100"
+              cy="98"
+              r="18"
               fill="url(#wheelGradient)"
               stroke="rgba(243, 229, 171, 0.5)"
               strokeWidth="2"
             />
             <circle
-              cx="90"
-              cy="88"
-              r="8"
+              cx="100"
+              cy="98"
+              r="10"
               fill="url(#hubGradient)"
             />
             
             {/* Rear Wheel */}
             <circle
-              cx="210"
-              cy="88"
-              r="15"
+              cx="220"
+              cy="98"
+              r="18"
               fill="url(#wheelGradient)"
               stroke="rgba(243, 229, 171, 0.5)"
               strokeWidth="2"
             />
             <circle
-              cx="210"
-              cy="88"
-              r="8"
+              cx="220"
+              cy="98"
+              r="10"
               fill="url(#hubGradient)"
             />
           </g>
@@ -114,16 +124,16 @@ export default function CarAnimation() {
           {/* Headlights */}
           <g className="headlights">
             <circle
-              cx="55"
-              cy="60"
-              r="6"
+              cx="65"
+              cy="70"
+              r="8"
               fill="url(#headlightGradient)"
               className="animate-pulse-glow"
             />
             <circle
-              cx="55"
-              cy="60"
-              r="3"
+              cx="65"
+              cy="70"
+              r="4"
               fill="rgba(255, 255, 255, 0.9)"
               className="animate-pulse-glow"
             />
@@ -133,14 +143,14 @@ export default function CarAnimation() {
           <g className="windows">
             {/* Windshield */}
             <path
-              d="M90 50 L95 38 L150 38 L150 50 L90 50 Z"
+              d="M100 60 L105 48 L160 48 L160 60 L100 60 Z"
               fill="url(#windowGradient)"
               opacity="0.7"
             />
             
             {/* Side Windows */}
             <path
-              d="M155 50 L155 38 L200 38 L210 50 L155 50 Z"
+              d="M165 60 L165 48 L210 48 L220 60 L165 60 Z"
               fill="url(#windowGradient)"
               opacity="0.7"
             />
@@ -162,6 +172,11 @@ export default function CarAnimation() {
             <linearGradient id="bumperGradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="rgba(218, 165, 32, 0.8)" />
               <stop offset="100%" stopColor="rgba(184, 134, 11, 0.9)" />
+            </linearGradient>
+            
+            <linearGradient id="grilleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="rgba(28, 25, 23, 1)" />
+              <stop offset="100%" stopColor="rgba(41, 37, 36, 0.9)" />
             </linearGradient>
             
             <radialGradient id="wheelGradient" cx="50%" cy="50%" r="50%">

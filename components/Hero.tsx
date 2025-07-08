@@ -13,7 +13,7 @@ export default function Hero() {
           
           {/* Left Side - Car Animation */}
           <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-            <div className="transform scale-150 lg:scale-125 xl:scale-150">
+            <div className="relative w-full max-w-md h-64 lg:h-80 flex items-center justify-center">
               <CarAnimation />
             </div>
           </div>
