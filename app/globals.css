@@ -1,65 +1,206 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@layer base {
-  :root {
-    --vintage-black: #0a0a0a;
-    --vintage-charcoal: #1a1a1a;
-    --vintage-dark: #2a2a2a;
-    --vintage-gold: #d4af37;
-    --vintage-gold-light: #f4e098;
-    --vintage-rust: #b7410e;
-    --vintage-brown: #8b4513;
-    --vintage-cream: #f5f5dc;
+/* Custom CSS Variables */
+:root {
+  --vintage-cream: #F3E5AB;
+  --vintage-gold: #DAA520;
+  --vintage-rust: #A0522D;
+  --vintage-charcoal: #36454F;
+  --vintage-dark: #2C3E50;
+  --vintage-black: #1C1C1C;
+  --vintage-brown: #8B4513;
+}
+
+/* Animation Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  25% { transform: translateY(-10px) translateX(5px); }
+  50% { transform: translateY(-5px) translateX(-3px); }
+  75% { transform: translateY(-15px) translateX(2px); }
+}
+
+@keyframes slide {
+  0% { transform: translateX(-100vw); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.8; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.3); }
+}
+
+@keyframes road-lines {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes smoke {
+  0% { 
+    opacity: 0.8; 
+    transform: translateY(0) scale(0.8); 
   }
-  
-  * {
-    @apply border-vintage-charcoal;
-  }
-  
-  body {
-    @apply bg-vintage-black text-vintage-cream font-sans;
-  }
-  
-  html {
-    scroll-behavior: smooth;
+  100% { 
+    opacity: 0; 
+    transform: translateY(-30px) scale(1.2); 
   }
 }
 
-@layer components {
-  .btn-vintage {
-    @apply px-6 py-3 bg-gradient-gold text-vintage-black font-semibold rounded-md transition-all duration-300 hover:shadow-vintage-lg transform hover:scale-105;
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+/* Car Animation Styles */
+.car-container {
+  position: relative;
+  z-index: 5;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.car-svg {
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.road-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(218, 165, 32, 0.5),
+    transparent
+  );
+  animation: road-lines 3s linear infinite;
+}
+
+.exhaust-smoke {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.smoke-puff {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: smoke 2s ease-out infinite;
+}
+
+.smoke-1 { animation-delay: 0s; }
+.smoke-2 { animation-delay: 0.7s; }
+.smoke-3 { animation-delay: 1.4s; }
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(218, 165, 32, 0.8);
+  border-radius: 50%;
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.sparkle-1 { 
+  top: 20%; 
+  left: 20%; 
+  animation-delay: 0s; 
+}
+.sparkle-2 { 
+  top: 60%; 
+  left: 80%; 
+  animation-delay: 1s; 
+}
+.sparkle-3 { 
+  top: 30%; 
+  left: 70%; 
+  animation-delay: 2s; 
+}
+.sparkle-4 { 
+  top: 80%; 
+  left: 30%; 
+  animation-delay: 1.5s; 
+}
+
+/* Utility Classes */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--vintage-gold), var(--vintage-rust));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Button Styles */
+.btn-vintage {
+  @apply bg-vintage-gold text-vintage-black px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-vintage-rust hover:text-vintage-cream transform hover:scale-105;
+  box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+}
+
+.btn-vintage-outline {
+  @apply border-2 border-vintage-gold text-vintage-gold px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-vintage-gold hover:text-vintage-black transform hover:scale-105;
+  box-shadow: 0 4px 15px rgba(218, 165, 32, 0.2);
+}
+
+/* Card Styles */
+.card-vintage {
+  @apply bg-vintage-charcoal border border-vintage-gold rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:border-vintage-rust transform hover:scale-105;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Animations */
+@media (max-width: 768px) {
+  .car-container {
+    transform: scale(0.8);
   }
   
-  .btn-vintage-outline {
-    @apply px-6 py-3 border-2 border-vintage-gold text-vintage-gold font-semibold rounded-md transition-all duration-300 hover:bg-vintage-gold hover:text-vintage-black;
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
   }
   
-  .text-gradient {
-    @apply bg-gradient-to-r from-vintage-gold to-vintage-gold-light bg-clip-text text-transparent;
-  }
-  
-  .card-vintage {
-    @apply bg-vintage-charcoal border border-vintage-dark rounded-lg shadow-vintage hover:shadow-vintage-lg transition-all duration-300;
-  }
-  
-  .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
-  }
-  
-  .container-vintage {
-    @apply max-w-7xl mx-auto;
+  .sparkle {
+    width: 3px;
+    height: 3px;
   }
 }
 
-@layer utilities {
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+@media (max-width: 480px) {
+  .car-container {
+    transform: scale(0.6);
   }
   
-  .backdrop-vintage {
-    backdrop-filter: blur(10px);
-    background: rgba(26, 26, 26, 0.8);
+  .smoke-puff {
+    width: 6px;
+    height: 6px;
   }
 }

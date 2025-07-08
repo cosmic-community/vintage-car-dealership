@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import CarAnimation from './CarAnimation';
 
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background with overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-vintage-black via-vintage-charcoal to-vintage-dark"></div>
+      
+      {/* Animated Car */}
+      <CarAnimation />
       
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">

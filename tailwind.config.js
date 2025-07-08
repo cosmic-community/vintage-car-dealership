@@ -1,42 +1,74 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        vintage: {
-          black: '#0a0a0a',
-          charcoal: '#1a1a1a',
-          dark: '#2a2a2a',
-          gold: '#d4af37',
-          'gold-light': '#f4e098',
-          'gold-dark': '#b8941f',
-          rust: '#b7410e',
-          'rust-light': '#d4552a',
-          'rust-dark': '#8b3009',
-          brown: '#8b4513',
-          'brown-light': '#a0522d',
-          'brown-dark': '#654321',
-          cream: '#f5f5dc',
-          'cream-dark': '#e6e6cd',
-        }
+        'vintage-cream': '#F3E5AB',
+        'vintage-gold': '#DAA520',
+        'vintage-rust': '#A0522D',
+        'vintage-charcoal': '#36454F',
+        'vintage-dark': '#2C3E50',
+        'vintage-black': '#1C1C1C',
+        'vintage-brown': '#8B4513',
       },
-      fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        serif: ['Georgia', 'serif'],
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'slide': 'slide 8s linear infinite',
+        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'road-lines': 'road-lines 3s linear infinite',
+        'smoke': 'smoke 2s ease-out infinite',
+        'sparkle': 'sparkle 3s ease-in-out infinite',
+        'gradient': 'gradient 3s ease infinite',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
+          '25%': { transform: 'translateY(-10px) translateX(5px)' },
+          '50%': { transform: 'translateY(-5px) translateX(-3px)' },
+          '75%': { transform: 'translateY(-15px) translateX(2px)' },
+        },
+        slide: {
+          '0%': { transform: 'translateX(-100vw)' },
+          '100%': { transform: 'translateX(100vw)' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: '0.8', filter: 'brightness(1)' },
+          '50%': { opacity: '1', filter: 'brightness(1.3)' },
+        },
+        'road-lines': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
+        },
+        smoke: {
+          '0%': { 
+            opacity: '0.8', 
+            transform: 'translateY(0) scale(0.8)' 
+          },
+          '100%': { 
+            opacity: '0', 
+            transform: 'translateY(-30px) scale(1.2)' 
+          },
+        },
+        sparkle: {
+          '0%, 100%': { opacity: '0', transform: 'scale(0)' },
+          '50%': { opacity: '1', transform: 'scale(1)' },
+        },
+        gradient: {
+          '0%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
+        },
       },
       backgroundImage: {
-        'gradient-vintage': 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)',
-        'gradient-gold': 'linear-gradient(135deg, #d4af37 0%, #f4e098 100%)',
-        'gradient-rust': 'linear-gradient(135deg, #b7410e 0%, #d4552a 100%)',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-      boxShadow: {
-        'vintage': '0 4px 6px -1px rgba(212, 175, 55, 0.1), 0 2px 4px -1px rgba(212, 175, 55, 0.06)',
-        'vintage-lg': '0 10px 15px -3px rgba(212, 175, 55, 0.1), 0 4px 6px -2px rgba(212, 175, 55, 0.05)',
-      }
     },
   },
   plugins: [],
