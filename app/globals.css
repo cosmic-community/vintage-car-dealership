@@ -179,6 +179,12 @@
 }
 
 /* Responsive Animations */
+@media (max-width: 1024px) {
+  .car-container {
+    transform: scale(0.9);
+  }
+}
+
 @media (max-width: 768px) {
   .car-container {
     transform: scale(0.8);

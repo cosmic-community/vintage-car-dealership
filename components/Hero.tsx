@@ -7,26 +7,36 @@ export default function Hero() {
       {/* Background with overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-vintage-black via-vintage-charcoal to-vintage-dark"></div>
       
-      {/* Animated Car */}
-      <CarAnimation />
-      
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-shadow">
-          <span className="text-vintage-cream">Vintage</span>
-          <span className="text-gradient"> Cars</span>
-        </h1>
-        <p className="text-xl md:text-2xl text-vintage-cream mb-8 max-w-3xl mx-auto">
-          Discover rare vintage automobiles and experience the artistry of classic car restoration. 
-          Where timeless craftsmanship meets modern expertise.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/cars" className="btn-vintage">
-            View Collection
-          </Link>
-          <Link href="/team" className="btn-vintage-outline">
-            Meet Our Team
-          </Link>
+      {/* Main Content Container */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[80vh]">
+          
+          {/* Left Side - Car Animation */}
+          <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+            <div className="transform scale-150 lg:scale-125 xl:scale-150">
+              <CarAnimation />
+            </div>
+          </div>
+          
+          {/* Right Side - Text Content */}
+          <div className="text-center lg:text-left order-1 lg:order-2">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-shadow">
+              <span className="text-vintage-cream">Vintage</span>
+              <span className="text-gradient"> Cars</span>
+            </h1>
+            <p className="text-lg md:text-xl lg:text-2xl text-vintage-cream mb-8 max-w-2xl mx-auto lg:mx-0">
+              Discover rare vintage automobiles and experience the artistry of classic car restoration. 
+              Where timeless craftsmanship meets modern expertise.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link href="/cars" className="btn-vintage">
+                View Collection
+              </Link>
+              <Link href="/team" className="btn-vintage-outline">
+                Meet Our Team
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
